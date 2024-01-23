@@ -1,0 +1,9 @@
+#root {
+  block-size: 100%;
+}
+
+.task-manager {
+  inline-size: max(256px, 35.352%);
+  margin-inline: auto;
+  transform: translateY(50%);
+}

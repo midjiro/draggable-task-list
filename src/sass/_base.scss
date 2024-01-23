@@ -1,0 +1,42 @@
+@use "vars";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  // dvh takes into account the size of additional interface parts like search pane and etc.
+  block-size: 100dvh;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+h1 {
+  font-size: vars.$fs-100;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: vars.$fs-200;
+  font-weight: 400;
+}
+
+input,
+p,
+li {
+  font-size: vars.$fs-300;
+  font-weight: 300;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}

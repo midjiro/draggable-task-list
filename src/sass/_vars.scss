@@ -1,0 +1,19 @@
+// * Breakpoints for clamp function: 320px → 1920px
+
+//  20.16px → 28.13px
+$fs-100: clamp(1.26rem, 1.1604rem + 0.4981vw, 1.7581rem);
+
+// 16.80px → 22.50px
+$fs-200: clamp(1.05rem, 0.9788rem + 0.3563vw, 1.4063rem);
+
+//  14.00px → 18.00px
+$fs-300: clamp(0.875rem, 0.825rem + 0.25vw, 1.125rem);
+
+// * 100 - darkest, 200 - little bit lighter and so on
+
+$cle-white-100: #f6f6f6;
+$clr-white-200: #ffffff;
+$black-100: #161616;
+$gray-100: #cdcdcd;
+$blue-100: #00a8e8;
+$red-100: #ed1c24;
