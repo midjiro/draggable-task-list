@@ -1,3 +1,5 @@
+@use "vars";
+
 #root {
   block-size: 100%;
 }
@@ -6,4 +8,53 @@
   inline-size: max(256px, 35.352%);
   margin-inline: auto;
   transform: translateY(50%);
+}
+
+.task-manager__form,
+.task-manager__tasks,
+.task-manager__footer {
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  border: 1px solid vars.$clr-white-100;
+}
+
+.task-manager__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-manager__body {
+  margin-block: 1.5rem;
+}
+
+.task-manager__form {
+  display: flex;
+  align-items: center;
+  margin-block-end: 1rem;
+
+  @media screen and (width >= 720px) {
+    margin-block-end: 1.5rem;
+  }
+}
+
+.task-manager__form > .form-control {
+  flex-grow: 0.7;
+}
+
+.task-manager__form > .btn {
+  flex-grow: 0.3;
+}
+
+.task-manager__tasks {
+  max-block-size: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.task-manager__footer {
+  text-align: center;
+  color: vars.$clr-gray-100;
 }

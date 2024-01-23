@@ -16,7 +16,7 @@ export default function CreateTaskForm() {
         />
         <p className="form-control__error"></p>
       </div>
-      <button>
+      <button className="btn">
         <span className="fa-solid fa-plus"></span>
         <span className="sr-only">Create</span>
       </button>
