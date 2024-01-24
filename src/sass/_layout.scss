@@ -30,7 +30,7 @@
 
 .task-manager__form {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   margin-block-end: 1rem;
 
   @media screen and (width >= 720px) {
@@ -47,6 +47,7 @@
 }
 
 .task-manager__tasks {
+  padding: 1rem;
   max-block-size: 200px;
   overflow-y: auto;
   display: flex;

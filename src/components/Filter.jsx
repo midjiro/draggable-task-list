@@ -1,14 +1,64 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 export default function Filter({ onChange }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const filterRef = useRef();
+
+  const collapse = () => {
+    setIsExpanded(false);
+  };
+
+  const switchVisibility = () => {
+    setIsExpanded((isExpanded) => !isExpanded);
+  };
+
+  // useCallback prevent function recreation between re-renders
+  const handleOutsideClick = useCallback(
+    (e) => {
+      if (!filterRef.current.contains(e.target)) collapse();
+    },
+    [filterRef]
+  );
+
+  const handleOptionChange = (e) => {
+    const newSelectedOption = e.target;
+    const optionList = Array.from(newSelectedOption.parentElement.children);
+
+    optionList.forEach((option) => {
+      option.classList.remove("filter__option--selected");
+    });
+
+    newSelectedOption.classList.add("filter__option--selected");
+
+    onChange(newSelectedOption.textContent);
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, [handleOutsideClick]);
+
   return (
-    <div className="filter">
-      <button className="filter__btn">
+    <div className="filter" ref={filterRef}>
+      <button
+        className="filter__btn"
+        aria-expanded={isExpanded}
+        aria-controls="filter"
+        onClick={switchVisibility}
+      >
         <i className="fa-solid fa-filter"></i>
         <span className="sr-only">Filter tasks by status</span>
       </button>
-      <ul className="filter__option-list">
-        <li className="filter__option filter__option--selected">To do</li>
+      <ul
+        className="filter__option-list"
+        id="filter"
+        onClick={handleOptionChange}
+      >
+        <li className="filter__option filter__option--selected">All</li>
+        <li className="filter__option ">To do</li>
         <li className="filter__option">Completed</li>
       </ul>
     </div>

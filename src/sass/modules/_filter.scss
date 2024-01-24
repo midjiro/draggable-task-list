@@ -1,0 +1,39 @@
+@use "../vars";
+
+.filter {
+  position: relative;
+}
+
+.filter__option-list {
+  scale: 1 0;
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-end: 0;
+  padding: 0.5rem;
+  background-color: vars.$clr-white-200;
+  border: 1px solid vars.$clr-white-100;
+  border-radius: 4px;
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.1);
+  transform-origin: top;
+  transition: scale 250ms;
+  visibility: collapse;
+}
+
+.filter__btn[aria-expanded="true"] ~ .filter__option-list {
+  scale: 1 1;
+  visibility: visible;
+}
+
+.filter__option {
+  color: vars.$clr-gray-100;
+  transition: all 250ms;
+
+  &:hover,
+  &--selected {
+    color: vars.$clr-black-100;
+  }
+
+  &:not(:last-child) {
+    margin-block-end: 0.5rem;
+  }
+}

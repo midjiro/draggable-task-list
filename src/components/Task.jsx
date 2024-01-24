@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function Task({ id, isCompleted, title }) {
+export default function Task({ id, status, title }) {
   return (
     <article className="task">
       <div className="task__status-indicator indicator">
         <label className="sr-only" htmlFor="#task-status">
-          {isCompleted ? "Completed" : "To do"}
+          {status}
         </label>
         <input
           type="checkbox"
