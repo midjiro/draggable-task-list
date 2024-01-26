@@ -4,6 +4,12 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @supports (animation-timeline: scroll()) {
+    animation: fade-in linear forwards;
+    animation-timeline: view(y);
+    animation-range: exit exit 40px;
+  }
 }
 
 .task__status-indicator {
@@ -31,5 +37,16 @@
 
   &:hover {
     color: vars.$clr-red-100;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  80%,
+  100% {
+    opacity: 0;
   }
 }

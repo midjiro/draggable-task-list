@@ -1,5 +1,4 @@
 import CreateTaskForm from "components/CreateTaskForm";
-import Footer from "components/Footer";
 import Header from "components/Header";
 import TaskList from "components/TaskList";
 import { TasksDispatchContext } from "components/context/TasksContext";
@@ -27,7 +26,6 @@ function App() {
           <CreateTaskForm tasks={taskList?.tasks} />
           <TaskList tasks={taskList?.tasks} filter={taskList?.filter} />
         </main>
-        <Footer />
       </TasksDispatchContext.Provider>
     </div>
   );
