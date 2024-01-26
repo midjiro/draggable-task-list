@@ -1,14 +1,9 @@
 {
   "tasks": [
     {
-      "id": "a9f4372b-fa96-4114-bd28-3061583cce94",
-      "title": "Title #2",
-      "status": "To do"
-    },
-    {
-      "id": "c62dce83-a175-4776-a0d0-9295eaa0a781",
+      "id": "d2e5e8b3-93f3-4929-b5c9-8186597d1154",
       "title": "Title #3",
-      "status": "Completed"
+      "status": "To do"
     }
   ]
 }

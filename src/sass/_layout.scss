@@ -42,19 +42,21 @@
   flex-grow: 0.7;
 }
 
-.task-manager__form > .btn {
+.task-manager__btn {
   flex-grow: 0.3;
+  border-inline-start: 1px solid vars.$clr-gray-100;
 }
 
 .task-manager__tasks {
   padding: 1rem;
-  max-block-size: 200px;
+  block-size: 200px;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
+.task-manager__message,
 .task-manager__footer {
   text-align: center;
   color: vars.$clr-gray-100;

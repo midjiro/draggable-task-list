@@ -45,9 +45,8 @@ export default function CreateTaskForm({ tasks }) {
           className="form-control__field"
           id="task-title"
         />
-        <p className="form-control__error"></p>
       </div>
-      <button className="btn">
+      <button className="task-manager__btn">
         <span className="fa-solid fa-plus"></span>
         <span className="sr-only">Create</span>
       </button>

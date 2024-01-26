@@ -30,7 +30,7 @@ export default function Task({ id, status, title }) {
 
   return (
     <article className="task">
-      <div className="task__status-indicator indicator">
+      <div>
         <label className="sr-only" htmlFor="#task-status">
           {status}
         </label>

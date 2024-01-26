@@ -21,10 +21,11 @@ h1 {
 
 h2 {
   font-size: vars.$fs-200;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 input,
+input::placeholder,
 p,
 li {
   font-size: vars.$fs-300;
@@ -39,4 +40,9 @@ button {
   cursor: pointer;
   background: transparent;
   border: none;
+}
+
+input {
+  border: none;
+  outline: none;
 }

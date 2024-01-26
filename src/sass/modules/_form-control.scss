@@ -1,0 +1,11 @@
+@use "../vars";
+
+.form-control__field {
+  inline-size: 100%;
+  block-size: 100%;
+  padding: 1rem;
+
+  &::placeholder {
+    color: vars.$clr-gray-100;
+  }
+}
