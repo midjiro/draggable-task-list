@@ -1,11 +1,10 @@
 import React from "react";
 import Task from "./Task";
 
-export default function TaskList({ tasks, filterByStatus }) {
+export default function TaskList({ tasks, filter }) {
   // Checks wether task is defined and its length > 0 or not
-
   if (tasks?.length > 0) {
-    if (filterByStatus === "All")
+    if (filter === "All")
       return (
         <div className="task-manager__tasks">
           {tasks.map((task, id) => (
@@ -17,7 +16,7 @@ export default function TaskList({ tasks, filterByStatus }) {
     return (
       <div className="task-manager__tasks">
         {tasks
-          .filter((task) => task.status === filterByStatus)
+          .filter((task) => task.status === filter)
           .map((task, id) => (
             <Task {...task} key={id} />
           ))}

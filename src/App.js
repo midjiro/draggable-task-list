@@ -2,29 +2,33 @@ import CreateTaskForm from "components/CreateTaskForm";
 import Footer from "components/Footer";
 import Header from "components/Header";
 import TaskList from "components/TaskList";
-import { useState } from "react";
+import { TasksDispatchContext } from "components/context/TasksContext";
+import { useEffect, useReducer } from "react";
+import { fetchTasks } from "services/tasks";
+import taskReducer from "reducers/tasks";
+import { ACTIONS } from "constants/actions";
 
 function App() {
-  const tasks = [
-    { id: 1, title: "Title #1", status: "Completed" },
-    { id: 2, title: "Title #2", status: "To do" },
-    { id: 3, title: "Title #3", status: "To do" },
-  ];
+  const [taskList, dispatch] = useReducer(taskReducer);
 
-  const [filterByStatus, setFilterByStatus] = useState("All");
-
-  const updateFilterByStatus = (newOption) => {
-    setFilterByStatus(newOption);
-  };
+  useEffect(() => {
+    fetchTasks()
+      .then((tasks) => {
+        dispatch({ type: ACTIONS.FETCH_TASKS, payload: { tasks } });
+      })
+      .catch((error) => console.error(error));
+  }, []);
 
   return (
     <div className="task-manager">
-      <Header filterOnChange={updateFilterByStatus} />
-      <main className="task-manager__body">
-        <CreateTaskForm />
-        <TaskList tasks={tasks} filterByStatus={filterByStatus} />
-      </main>
-      <Footer />
+      <TasksDispatchContext.Provider value={dispatch}>
+        <Header />
+        <main className="task-manager__body">
+          <CreateTaskForm tasks={taskList?.tasks} />
+          <TaskList tasks={taskList?.tasks} filter={taskList?.filter} />
+        </main>
+        <Footer />
+      </TasksDispatchContext.Provider>
     </div>
   );
 }

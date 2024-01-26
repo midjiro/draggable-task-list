@@ -1,8 +1,17 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  useContext,
+} from "react";
+import { TasksDispatchContext } from "components/context/TasksContext";
+import { ACTIONS } from "constants/actions";
 
-export default function Filter({ onChange }) {
+export default function Filter() {
   const [isExpanded, setIsExpanded] = useState(false);
   const filterRef = useRef();
+  const dispatch = useContext(TasksDispatchContext);
 
   const collapse = () => {
     setIsExpanded(false);
@@ -19,6 +28,12 @@ export default function Filter({ onChange }) {
     },
     [filterRef]
   );
+
+  const onChange = (newFilterValue) =>
+    dispatch({
+      type: ACTIONS.UPDATE_FILTER,
+      payload: { newFilterValue },
+    });
 
   const handleOptionChange = (e) => {
     const newSelectedOption = e.target;
