@@ -1,32 +1,29 @@
-import React from "react";
-import Task from "./Task";
+import React, { forwardRef } from 'react';
+import Task from './Task';
+import { motion } from 'framer-motion';
 
-export default function TaskList({ tasks, filter }) {
-  // Checks wether task is defined and its length > 0 or not
-  if (tasks?.length > 0) {
-    if (filter === "All")
-      return (
-        <div className="task-manager__tasks">
-          {tasks.map((task, id) => (
-            <Task {...task} key={id} />
-          ))}
-        </div>
-      );
+const TaskList = forwardRef(({ tasks, filter }, ref) => {
+    const filteredTasks =
+        filter === 'All'
+            ? tasks
+            : tasks?.filter((task) => task.status === filter);
+
+    if (filteredTasks?.length === 0) {
+        return (
+            <div className="task-manager__tasks" ref={ref}>
+                <p className="task-manager__message">No tasks yet added</p>
+            </div>
+        );
+    }
+    // Checks wether task is defined and its length > 0 or not
 
     return (
-      <div className="task-manager__tasks">
-        {tasks
-          .filter((task) => task.status === filter)
-          .map((task, id) => (
-            <Task {...task} key={id} />
-          ))}
-      </div>
+        <div className="task-manager__tasks" ref={ref}>
+            {filteredTasks?.map((task, id) => (
+                <Task {...task} key={id} layout />
+            ))}
+        </div>
     );
-  }
+});
 
-  return (
-    <div className="task-manager__tasks">
-      <p className="task-manager__message">No tasks yet added</p>
-    </div>
-  );
-}
+export default motion(TaskList);
